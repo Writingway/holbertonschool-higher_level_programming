@@ -1,5 +1,6 @@
 # Python Hello World Project
 Welcome to the Python world! This repository contains exercises and examples to help you get started with Python programming.
+
 ---
 
 ## Resources
@@ -20,6 +21,7 @@ By the end of this project, you should be able to explain to anyone, without usi
 - How to work with strings
 - What indexing and slicing are in Python
 - The official Python coding style and how to check your code with Pycodestyle
+
 ---
 
 ## Requirements
@@ -32,12 +34,14 @@ All Python scripts in this repository must follow these rules:
 - **Pycodestyle compliance:** Version 2.7.*
 - **Executability:** All files must be executable
 - **File length:** Will be tested using `wc`
+
 ---
 
 ## More Information
 **Pycodestyle** is the current standard for Python code style and helps maintain clean, readable code.
 
 ---
+
 ## Getting Started
 To run your Python scripts:
 
