@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 import this
-print(this)
+str = f"{this}"[:-50]
+print(str)
