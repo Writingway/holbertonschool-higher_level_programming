@@ -6,7 +6,6 @@ def islower(c):
         return False
 
 
-print("a is {}".format("lower" if islower("\"") else "upper"))
 print("a is {}".format("lower" if islower("a") else "upper"))
 print("H is {}".format("lower" if islower("H") else "upper"))
 print("A is {}".format("lower" if islower("A") else "upper"))
