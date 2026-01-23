@@ -1,0 +1,33 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+>>> add_integer(1, 2)
+3
+
+>>> add_integer(100)
+198
+
+>>> add_integer(10, 30.797)
+40
+
+>>> add_integer(-5.78, -5.78)
+-10
+
+>>> add_integer(-5, "salut")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+
+>>> add_integer("salut", -5)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> add_integer(float('inf'), -5)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> add_integer(float('nan'), -5)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
