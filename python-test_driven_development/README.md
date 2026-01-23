@@ -20,7 +20,3 @@ Projet Python consacré au développement piloté par les tests (TDD), où les t
 python3 -m doctest ./tests/*
 python3 nom_du_fichier.py
 ```
-
-## Auteur
-
-Pierre
