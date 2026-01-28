@@ -6,7 +6,7 @@ This module defines a Rectangle class.
 
 class Rectangle:
     """
-    Docstring for Rectangle class.
+    for Rectangle class.
     width: width of the rectangle
     height: height of the rectangle
     """
@@ -26,16 +26,16 @@ class Rectangle:
     @property
     def width(self):
         """
-        Docstring for width getter.
+        for width getter.
         :param self: self
         :return: width
         """
-        return (self.__width)
+        return self.__width
 
     @width.setter
     def width(self, value):
         """
-        Docstring for width setter.
+        for width setter.
         :param self: self
         :param value: value
         """
@@ -48,16 +48,16 @@ class Rectangle:
     @property
     def height(self):
         """
-        Docstring for height getter.
+        for height getter.
         :param self: self
         :return: height
         """
-        return (self.__height)
+        return self.__height
 
     @height.setter
     def height(self, value):
         """
-        Docstring for height setter.
+        for height setter.
         :param self: self
         :param value: value
         """
