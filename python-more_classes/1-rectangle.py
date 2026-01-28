@@ -15,6 +15,8 @@ class Rectangle:
         :param width: width
         :param height: height
         """
+        self.__width = width
+        self.__height = height
         if not isinstance(self.__width, int):
             raise TypeError("size must be an integer")
         if self.__width < 0:
@@ -23,8 +25,6 @@ class Rectangle:
             raise TypeError("size must be an integer")
         if self.__height < 0:
             raise ValueError("size must be >= 0")
-        self.__width = width
-        self.__height = height
 
     @property
     def width(self):
