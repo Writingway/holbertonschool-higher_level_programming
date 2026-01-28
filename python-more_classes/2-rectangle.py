@@ -80,5 +80,9 @@ class Rectangle:
         Method for perimeter
         :param self: self
         """
+        if not self.__height or self.__width == 0:
+            result_perimeter = 0
+            return (result_perimeter)
+
         result_perimeter = 2 * (self.__height + self.__width)
         return (result_perimeter)
