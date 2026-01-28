@@ -37,10 +37,9 @@ class Square:
         """
         Calculates the area of the square.
         Returns:
-            int: The area of the square.
+            int: The size of the square's sides.
         """
-        square_area = self.__size * self.__size
-        return square_area
+        return self.__size
 
     @size.setter
     def size(self, value):
