@@ -9,3 +9,4 @@ class Square:
     Docstring for Square class.
     Represents a square with height and width attributes.
     """
+    pass
