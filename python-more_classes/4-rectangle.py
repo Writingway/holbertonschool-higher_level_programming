@@ -93,11 +93,11 @@ class Rectangle:
         """
         if not self.__height or self.__width == 0:
             return ("")
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return ("")
 
     def __repr__(self):
         """
         Method for __repr__
         :param self: self
         """
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return ("Rectangle({}, {})".format(self.__width, self.__height))
