@@ -15,16 +15,17 @@ class Rectangle:
         :param width: width
         :param height: height
         """
+        if not isinstance(width, int):
+            raise TypeError("size must be an integer")
+        if width < 0:
+            raise ValueError("size must be >= 0")
         self.__width = width
+
+        if not isinstance(height, int):
+            raise TypeError("size must be an integer")
+        if height < 0:
+            raise ValueError("size must be >= 0")
         self.__height = height
-        if not isinstance(self.__width, int):
-            raise TypeError("size must be an integer")
-        if self.__width < 0:
-            raise ValueError("size must be >= 0")
-        if not isinstance(self.__height, int):
-            raise TypeError("size must be an integer")
-        if self.__height < 0:
-            raise ValueError("size must be >= 0")
 
     @property
     def width(self):
@@ -33,7 +34,7 @@ class Rectangle:
         :param self: self
         :return: width
         """
-        return (self.__width)
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -42,9 +43,9 @@ class Rectangle:
         :param self: self
         :param value: value
         """
-        if not isinstance(self.__width, int):
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if self.__width < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
         self.__width = value
 
@@ -64,8 +65,8 @@ class Rectangle:
         :param self: self
         :param value: value
         """
-        if not isinstance(self.__height, int):
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if self.__height < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
         self.__height = value
