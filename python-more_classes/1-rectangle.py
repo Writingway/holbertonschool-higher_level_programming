@@ -7,14 +7,10 @@ This module defines a Rectangle class.
 class Rectangle:
     """
     Docstring for Rectangle class.
+    width: width of the rectangle
+    height: height of the rectangle
     """
     def __init__(self, width=0, height=0):
-        """
-        Docstring for Retangle constructor.
-        :param self: self
-        :param width: width
-        :param height: height
-        """
         if not isinstance(width, int):
             raise TypeError("size must be an integer")
         if width < 0:
@@ -34,7 +30,7 @@ class Rectangle:
         :param self: self
         :return: width
         """
-        return self.__width
+        return (self.__width)
 
     @width.setter
     def width(self, value):
