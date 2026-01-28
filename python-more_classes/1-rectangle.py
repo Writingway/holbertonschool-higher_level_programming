@@ -9,6 +9,20 @@ class Rectangle:
     Docstring for Rectangle class.
     """
     def __init__(self, width=0, height=0):
+        """
+        Docstring for Retangle constructor.
+        :param self: self
+        :param width: width
+        :param height: height
+        """
+        if not isinstance(self.__width, int):
+            raise TypeError("size must be an integer")
+        if self.__width < 0:
+            raise ValueError("size must be >= 0")
+        if not isinstance(self.__height, int):
+            raise TypeError("size must be an integer")
+        if self.__height < 0:
+            raise ValueError("size must be >= 0")
         self.__width = width
         self.__height = height
 
