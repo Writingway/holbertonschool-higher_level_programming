@@ -26,18 +26,14 @@ class Rectangle:
     @property
     def width(self):
         """
-        Method for width getter.
-        :param self: self
-        :return: width
+        Returns the width getter.
         """
         return self.__width
 
     @width.setter
     def width(self, value):
         """
-        Method for width setter.
-        :param self: self
-        :param value: value
+        Returns the width setter.
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -48,18 +44,14 @@ class Rectangle:
     @property
     def height(self):
         """
-        Method for height getter.
-        :param self: self
-        :return: height
+        Returns the height getter.
         """
         return self.__height
 
     @height.setter
     def height(self, value):
         """
-        Method for height setter.
-        :param self: self
-        :param value: value
+        Returns the height setter.
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -69,35 +61,35 @@ class Rectangle:
 
     def area(self):
         """
-        Method for area
-        :param self: self
+        Returns the area of the rectangle
         """
         rectangle_area = self.__height * self.__width
-        return (rectangle_area)
+        return rectangle_area
 
     def perimeter(self):
         """
-        Method for perimeter
-        :param self: self
+        Returns the perimeter of the rectangle
         """
-        if not self.__height or self.__width == 0:
-            return (0)
+        if self.__height == 0 or self.__width == 0:
+            return 0
 
         result_perimeter = 2 * (self.__height + self.__width)
-        return (result_perimeter)
+        return result_perimeter
 
     def __str__(self):
         """
-        Method for __str__
-        :param self: self
+        Returns the string representation of the rectangle
         """
+        result = []
         if not self.__height or self.__width == 0:
             return ("")
-        return ("")
+
+        for i in range(self.__height):
+            result.append("#" * self.__width)
+        return ("\n".join(result))
 
     def __repr__(self):
         """
-        Method for __repr__
-        :param self: self
+        Returns the string representation of the rectangle
         """
-        return ("Rectangle({}, {})".format(self.__width, self.__height))
+        return "Rectangle({}, {})".format(self.__width, self.__height)
