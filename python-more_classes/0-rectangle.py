@@ -1,11 +1,11 @@
 #!/bin/usr/python3
 """
-Docstring for python-more_classes.0-rectangle
+This module defines a Rectangle class.
 """
 
 
 class Rectangle:
     """
-    Docstring for Rectangle
+    Docstring for Rectangle class.
     """
     pass
