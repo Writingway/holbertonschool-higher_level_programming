@@ -70,8 +70,7 @@ class Square:
         """
         Sets the position of the square.
         """
-        if isinstance(value, tuple) and len(value) == 2 and \
-                all(isinstance(num, int) and num >= 0 for num in value):
+        if isinstance(value, tuple) == 2:
             self.__position = value
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
