@@ -16,8 +16,8 @@ class Square:
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """
@@ -56,7 +56,7 @@ class Square:
         """
         Sets the position of the square.
         """
-        if isinstance(value, tuple) == 2:
+        if isinstance(value, tuple) is True:
             self.__position = value
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -73,5 +73,5 @@ class Square:
                 print("")
         for i in range(self.__size):
             if self.__position[0] > 0:
-                print("_" * self.__position[0], end="")
+                print(" " * self.__position[0], end="")
             print("#" * self.__size)
