@@ -6,16 +6,11 @@ This module defines a Square class.
 
 class Square:
     """
-    Docstring for Square class.
+    Square class.
     """
     def __init__(self, size=0, position=(0, 0)):
         """
         Initializes the square with a given size.
-        Args:
-        size (int): The size of the square's sides.
-        Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is negative.
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
@@ -27,8 +22,6 @@ class Square:
     def area(self):
         """
         Calculates the area of the square.
-        Returns:
-            int: The area of the square.
         """
         square_area = self.__size * self.__size
         return square_area
@@ -37,8 +30,6 @@ class Square:
     def size(self):
         """
         Calculates the area of the square.
-        Returns:
-            int: The size of the square's sides.
         """
         return self.__size
 
@@ -46,11 +37,6 @@ class Square:
     def size(self, value):
         """
         Sets the area of the square.
-        Args:
-            value (int): The new size of the square's sides.
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is negative.
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -77,8 +63,7 @@ class Square:
 
     def my_print(self):
         """
-        Docstring for my_print
-        :param self: print the square with the # character
+        method for print the square with the # character
         """
         if self.__size == 0:
             print("")
