@@ -11,7 +11,6 @@ class Rectangle:
     height: height of the rectangle
     """
     number_of_instances = 0
-    id = 0
 
     def __init__(self, width=0, height=0):
         if not isinstance(width, int):
@@ -25,7 +24,6 @@ class Rectangle:
         if height < 0:
             raise ValueError("height must be >= 0")
         self.__height = height
-        self.id = Rectangle.number_of_instances
         Rectangle.number_of_instances += 1
 
     @property
