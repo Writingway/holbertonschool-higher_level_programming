@@ -1,0 +1,29 @@
+>>> MyList = __import__('1-my_list').MyList
+
+>>> MyList(1)
+[1]
+
+>>> MyList(100)
+[100]
+
+>>> MyList(30.797)
+[30.797]
+
+>>> MyList(-5.79)
+[-5.79]
+
+>>> MyList("salut")
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+
+>>> MyList(float('inf'))
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+
+>>> MyList(float('nan'))
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
