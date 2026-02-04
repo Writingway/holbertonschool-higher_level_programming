@@ -81,6 +81,7 @@ def shape_info(cls):
     print("Area: {}".format(cls.area()))
     print("Perimeter: {}".format(cls.perimeter()))
 
+
 """
 Testing the classes and function
 """
