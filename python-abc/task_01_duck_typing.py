@@ -2,6 +2,8 @@
 """
 This module demonstrates duck typing with Shape classes.
 """
+
+
 from abc import ABC, abstractmethod
 import math
 
@@ -78,3 +80,11 @@ def shape_info(cls):
     """
     print("Area: {}".format(cls.area()))
     print("Perimeter: {}".format(cls.perimeter()))
+
+"""
+Testing the classes and function
+"""
+circle = Circle(radius=8)
+rectangle = Rectangle(width=3, height=4)
+shape_info(circle)
+shape_info(rectangle)
