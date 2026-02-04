@@ -15,7 +15,7 @@ class Animal(ABC):
     @abstractmethod
     def sound(self):
         """
-        Abstract method to be implemented by subclasses to return 
+        Abstract method to be implemented by subclasses to return
         the sound made by the animal.
         """
         pass
