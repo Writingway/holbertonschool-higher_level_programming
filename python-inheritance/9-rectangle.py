@@ -13,14 +13,10 @@ class Rectangle(BaseGeometry):
         """
         Initializes a Rectangle instance with width and height
         """
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-        self.integer_validator("width", self.__width)
-        self.integer_validator("height", self.__height)
-        if not type(width) is int or width <= 0:
-            raise TypeError("width must be an integer")
-        if not type(height) is int or height <= 0:
-            raise TypeError("height must be an integer")
 
     def area(self):
         """
