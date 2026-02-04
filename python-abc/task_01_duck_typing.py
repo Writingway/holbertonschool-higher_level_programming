@@ -5,7 +5,7 @@ This module demonstrates duck typing with Shape classes.
 
 
 from abc import ABC, abstractmethod
-from math import pi
+import math
 
 
 class Shape(ABC):
@@ -35,19 +35,19 @@ class Circle(Shape):
         """
         Initialize Circle with radius.
         """
-        self.radius = radius
+        self.radius = abs(radius)
 
     def area(self):
         """
         Compute area of the circle.
         """
-        return pi * (self.radius ** 2)
+        return math.pi * (self.radius ** 2)
 
     def perimeter(self):
         """
         Compute perimeter of the circle.
         """
-        return 2 * pi * self.radius
+        return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
@@ -80,12 +80,3 @@ def shape_info(cls):
     """
     print("Area: {}".format(cls.area()))
     print("Perimeter: {}".format(cls.perimeter()))
-
-
-"""
-Testing the classes and function
-"""
-circle3 = Circle(8)
-rectangle3 = Rectangle(3, 4)
-shape_info(circle3)
-shape_info(rectangle3)
