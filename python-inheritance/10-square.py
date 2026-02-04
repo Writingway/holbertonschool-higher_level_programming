@@ -1,4 +1,4 @@
-#!/usr/bon/python3
+#!/usr/bin/python3
 """
 Module that creates a Square class based on Rectangle.
 """
