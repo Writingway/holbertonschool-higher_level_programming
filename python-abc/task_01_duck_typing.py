@@ -85,7 +85,7 @@ def shape_info(cls):
 """
 Testing the classes and function
 """
-circle = Circle(radius=8)
-rectangle = Rectangle(width=3, height=4)
-shape_info(circle)
-shape_info(rectangle)
+circle3 = Circle(8)
+rectangle3 = Rectangle(3, 4)
+shape_info(circle3)
+shape_info(rectangle3)
