@@ -1,32 +1,9 @@
 #!/usr/bin/python3
 """
-Defines an class BaseGeometry
-"""
-
-
-class BaseGeometry:
-    """
-    Empty class BaseGeometry
-    """
-    def area(self):
-        """
-        Raises an exception indicating that the area method is not implemented
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        self.name = name
-        self.value = value
-
-        if not isinstance(value, int) or isinstance(value, bool):
-            raise TypeError("{} must be an integer".format(self.name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(self.name))
-
-
-"""
 Defines an class Rectangle base on BaseGeometry
 """
+
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
