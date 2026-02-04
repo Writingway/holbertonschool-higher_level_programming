@@ -1,8 +1,9 @@
 #!/usr/bon/python3
-Rectangle = __import__('9-rectangle').Rectangle
 """
 Defines a class Square based on Rectangle
 """
+
+Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
