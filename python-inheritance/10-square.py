@@ -1,7 +1,8 @@
 #!/usr/bon/python3
 """
-Defines a class Square based on Rectangle
+Module that creates a Square class based on Rectangle.
 """
+
 
 Rectangle = __import__('9-rectangle').Rectangle
 
@@ -10,6 +11,7 @@ class Square(Rectangle):
     """
     Represents a class of a square
     """
+
     def __init__(self, size):
         """
         Initializes a Square instance with size
