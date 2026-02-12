@@ -1,28 +1,32 @@
 #!/usr/bin/python3
 import pickle
+"""This module defines a CustomObject class that can be serialized and 
+deserialized using the pickle module.
+"""
 
 
 class CustomObject:
-
     def __init__(self, name, age, is_student):
-        self.name = name
-        self.age = age
-        self.is_student = is_student
+        self.name = str(name)
+        self.age = int(age)
+        self.is_student = bool(is_student)
 
     def display(self):
-        print(f"Name: {self.name}")
-        print(f"Age: {self.age}")
-        print(f"Is Student: {self.is_student}")
+        print("Name: {}".format(self.name))
+        print("Age: {}".format(self.age))
+        print("Is Student: {}".format(self.is_student))
 
     def serialize(self, filename):
-        if not filename or not filename.endswith('.pkl'):
+        try:
+            with open(filename, "wb") as file:
+                pickle.dump(self, file)
+        except FileNotFoundError:
             return None
-        with open(filename, "wb") as file:
-            pickle.dump(self, file)
 
     @classmethod
     def deserialize(cls, filename):
-        if not filename or not filename.endswith('.pkl'):
+        try:
+            with open(filename, "rb") as file:
+                return pickle.load(file)
+        except FileNotFoundError:
             return None
-        with open(filename, "rb") as file:
-            return pickle.load(file)
