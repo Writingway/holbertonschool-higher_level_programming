@@ -20,7 +20,7 @@ class CustomObject:
         try:
             with open(filename, "wb") as file:
                 pickle.dump(self, file)
-        except FileNotFoundError:
+        except OSError:
             return None
 
     @classmethod
@@ -28,5 +28,5 @@ class CustomObject:
         try:
             with open(filename, "rb") as file:
                 return pickle.load(file)
-        except FileNotFoundError:
+        except (EOFError, pickle.UnpicklingError):
             return None
