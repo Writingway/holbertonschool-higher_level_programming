@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-from fileinput import filename
-from logging import root
 import xml.etree.ElementTree as ET
 
 
@@ -10,8 +8,9 @@ def serialize_to_xml(dictionary, filename):
         for key, value in dictionary.items():
             child = ET.SubElement(root, key)
             child.text = str(value)
-            tree = ET.ElementTree(root)
-            tree.write(filename)
+
+        tree = ET.ElementTree(root)
+        tree.write(filename)
         return True
     except Exception:
         return False
