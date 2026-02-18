@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 This module implements a simple HTTP server using the http.server module.
 """
@@ -14,13 +13,10 @@ class SimpleClassServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            data = {
-                'message': "Hello, this is a simple API!",
-                'status': 'success'
-            }
-            self.wfile.write(json.dumps(data).encode())
+            self.wfile.write(b"Hello, this is a simple API!")
+
         elif self.path == '/data':
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
@@ -56,13 +52,13 @@ class SimpleClassServer(BaseHTTPRequestHandler):
                 'message': "Endpoint not found",
                 'status': "404 Not Found"
             }
-            self.wfile.write(json.dumps(data).encode())
+            return self.wfile.write(json.dumps(data).encode())
 
 
 def run():
-    server_address = ('', 8080)
+    server_address = ('', 8000)
     httpd = HTTPServer(server_address, SimpleClassServer)
-    print("Starting httpd server on port: ", 8080)
+    print("Server running on http://localhost:8000")
     httpd.serve_forever()
 
 
