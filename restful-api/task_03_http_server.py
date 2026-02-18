@@ -27,33 +27,23 @@ class SimpleClassServer(BaseHTTPRequestHandler):
                 "city": "New York"
             }
             self.wfile.write(json.dumps(data).encode())
-        elif self.path == '/info':
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            data = {
-                "version": "1.0",
-                "description": "A simple API built with http.server"
-            }
-            self.wfile.write(json.dumps(data).encode())
+
         elif self.path == "/status":
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            data = {
-                "message": "OK",
-            }
-            self.wfile.write(json.dumps(data).encode())
+            message = "OK"
+
         else:
             self.send_response(404, message="404 Not Found")
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            data = "Endpoint not found"
+            message = "Endpoint not found"
 
-        self.wfile.write(json.dumps(data).encode())
+        self.wfile.write(bytes(message, 'utf-8'))
 
 
-def run():
+def start():
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, SimpleClassServer)
     print("Server running on http://localhost:8000")
@@ -61,4 +51,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    start()
