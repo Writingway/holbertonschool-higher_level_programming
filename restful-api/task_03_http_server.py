@@ -45,14 +45,12 @@ class SimpleClassServer(BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(data).encode())
         else:
-            self.send_response(404)
-            self.send_header('Content-Type', 'application/json')
+            self.send_response(404, message="404 Not Found")
+            self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            data = {
-                'message': "Endpoint not found",
-                'status': "404 Not Found"
-            }
-            return self.wfile.write(json.dumps(data).encode())
+            data = "Endpoint not found"
+
+        self.wfile.write(json.dumps(data).encode())
 
 
 def run():
