@@ -10,32 +10,20 @@ users = {}
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    if request.method == "POST":
-        content = json.loads(request.data)
-        if "username" in content.keys():
-            if content["username"] in users:
-                return jsonify({
-                    "error": "Username already exists"
-                }), 409
+    payload = request.get_json(silent=True)
+    if payload is None:
+        return jsonify({"error": "Invalid JSON"}), 400
 
-            if jsonify(content) is None:
-                return jsonify({"error": "Invalid JSON"}), 400
+    username = payload.get("username")
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
 
-            user = {
-                "username": content["username"],
-                "name": content["name"],
-                "age": content["age"],
-                "city": content["city"]
-            }
-            users[content["username"]] = user
-            message = "User added successfully"
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 409
 
-            return jsonify({
-                "message": message,
-                "user": user
-            }), 201
-        else:
-            return jsonify({"error": "Username is required"}), 400
+    users[username] = payload
+
+    return jsonify({"message": "User added", "user": payload}), 201
 
 
 @app.route("/users/<username>", methods=["GET"])
