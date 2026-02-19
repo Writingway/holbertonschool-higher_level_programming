@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -38,7 +38,7 @@ def add_user():
             return jsonify({"error": "Username is required"}), 400
 
 
-@app.route("/users/<username>")
+@app.route("/users/<username>", methods=["GET"])
 def get_user(username):
     user_info = users.get(username)
 
@@ -48,18 +48,17 @@ def get_user(username):
         return jsonify({"error": "User not found"}), 404
 
 
-@app.route("/status")
+@app.route("/status", methods=["GET"])
 def status():
     return ("OK")
 
 
-@app.route("/data")
+@app.route("/data", methods=["GET"])
 def get_data():
-    usernames = [username for username in users.keys()]
-    return jsonify(usernames)
+    return jsonify(list(users.keys()))
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
     return "Welcome to the Flask API!"
 
