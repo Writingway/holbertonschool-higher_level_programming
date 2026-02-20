@@ -6,7 +6,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '0c688cae24884016b406a7f9ed93e7ac'
+app.config["JWT_SECRET_KEY"] = '0c688cae24884016b406a7f9ed93e7ac'
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
