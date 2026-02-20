@@ -41,7 +41,7 @@ def basic_protected():
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json(silent=True)
-    if not data:
+    if data is None:
         return jsonify({"error": "Invalid JSON"}), 400
 
     username = data.get("username")
