@@ -6,7 +6,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
-app.config["JWT_SECRET_KEY"] = "0c688cae24884016b406a7f9ed93e7ac"
+app.config["JWT_SECRET_KEY"] = "super-secret-key"
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
@@ -85,7 +85,7 @@ def handle_invalid_token_error(err):
 
 
 @jwt.expired_token_loader
-def handle_expired_token_error(err):
+def handle_expired_token_error(jwt_header, jwt_payload):
     return jsonify({"error": "Token has expired"}), 401
 
 
