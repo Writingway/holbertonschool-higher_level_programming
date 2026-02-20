@@ -24,8 +24,8 @@ users = {
 }
 
 
-@auth.get_password
-def get_pw(username, password):
+@auth.verify_password
+def verify_password(username, password):
     user = users.get(username)
     if user and check_password_hash(user["password"], password):
         return username
