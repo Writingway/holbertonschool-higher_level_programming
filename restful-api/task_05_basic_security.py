@@ -7,7 +7,7 @@ from flask_httpauth import HTTPDigestAuth
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '0c688cae24884016b406a7f9ed93e7ac'
 jwt = JWTManager(app)
-
+auth = HTTPDigestAuth()
 
 users = {
     "user1": {
@@ -24,6 +24,7 @@ users = {
 
 
 @app.route("/basic-protected", methods=["GET"])
+@auth.login_required
 def basic_protected():
     user = request.authorization
     if user and user.username in users:
@@ -36,9 +37,9 @@ def basic_protected():
 
 @app.route("/login", methods=["POST"])
 def login():
-    data = request.get_json()
+    data = request.get_json(silent=True)
     if not data:
-        return jsonify({"error": "Missing JSON in request"}), 400
+        return jsonify({"error": "Invalid JSON"}), 400
 
     username = data.get("username")
     password = data.get("password")
@@ -50,15 +51,13 @@ def login():
         token = create_access_token(identity=username, additional_claims={
             "role": user["role"]
         })
-        return jsonify(access_token=token), 200
-
-    return jsonify({"error": "Invalid credentials"}), 401
+        return jsonify({"access_token": token}), 200
 
 
 @app.route("/jwt-protected", methods=["GET"])
 @jwt_required()
 def jwt_protected():
-    return jsonify({"message": "JWT Auth: Access Granted"}), 200
+    return "JWT Auth: Access Granted"
 
 
 @app.route("/admin-only", methods=["GET"])
@@ -68,9 +67,9 @@ def admin_only():
     user = users.get(username)
 
     if user and user["role"] == "admin":
-        return jsonify({"message": "Admin Access: Granted"}), 200
+        return jsonify({"message": "Admin Access: Granted"}), 403
 
-    return jsonify({"error": "Admin access required"}), 403
+    return "Admin access required"
 
 
 @jwt.unauthorized_loader
