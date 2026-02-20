@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from flask import Flask, jsonify, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
@@ -24,9 +25,9 @@ users = {
 
 
 @auth.get_password
-def get_pw(username):
+def get_pw(username, password):
     user = users.get(username)
-    if user and check_password_hash(user["password"], "password"):
+    if user and check_password_hash(user["password"], password):
         return username
     return None
 
