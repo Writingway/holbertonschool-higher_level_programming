@@ -46,10 +46,8 @@ def login():
 
     username = data.get("username")
     password = data.get("password")
-    if not username or not password:
-        return jsonify({"error": "Invalid credentials"}), 401
-
     user = users.get(username)
+
     if user and check_password_hash(user["password"], password):
         token = create_access_token(identity={
             "username": username, "role": user["role"]
