@@ -7,9 +7,8 @@ from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "change-this-secret"
-
-auth = HTTPBasicAuth()
 jwt = JWTManager(app)
+auth = HTTPBasicAuth()
 
 users = {
     "user1": {
