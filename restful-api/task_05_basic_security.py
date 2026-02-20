@@ -3,12 +3,12 @@ from flask import Flask, jsonify, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 from flask_jwt_extended import get_jwt_identity
-from flask_httpauth import HTTPDigestAuth
+from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '0c688cae24884016b406a7f9ed93e7ac'
 jwt = JWTManager(app)
-auth = HTTPDigestAuth()
+auth = HTTPBasicAuth()
 
 users = {
     "user1": {
@@ -87,16 +87,6 @@ def handle_invalid_token_error(err):
 @jwt.expired_token_loader
 def handle_expired_token_error(err):
     return jsonify({"error": "Token has expired"}), 401
-
-
-@jwt.revoked_token_loader
-def handle_revoked_token_error(err):
-    return jsonify({"error": "Token has been revoked"}), 401
-
-
-@jwt.needs_fresh_token_loader
-def handle_needs_fresh_token_error(err):
-    return jsonify({"error": "Fresh token required"}), 401
 
 
 if __name__ == "__main__":
