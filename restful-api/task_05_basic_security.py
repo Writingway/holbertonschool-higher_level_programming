@@ -7,8 +7,9 @@ from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "change-this-secret"
-jwt = JWTManager(app)
+
 auth = HTTPBasicAuth()
+jwt = JWTManager(app)
 
 users = {
     "user1": {
@@ -46,13 +47,17 @@ def login():
 
     username = data.get("username")
     password = data.get("password")
-    user = users.get(username)
+    if not username or not password:
+        return jsonify({"error": "Invalid credentials"}), 401
 
-    if user and check_password_hash(user["password"], password):
-        token = create_access_token(identity={
-            "username": username, "role": user["role"]
-        })
-        return jsonify({"access_token": token}), 200
+    user = users.get(username)
+    if not user or not check_password_hash(user["password"], password):
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    token = create_access_token(identity={
+        "username": username, "role": user["role"]
+    })
+    return jsonify({"access_token": token}), 200
 
 
 @app.route("/jwt-protected", methods=["GET"])
