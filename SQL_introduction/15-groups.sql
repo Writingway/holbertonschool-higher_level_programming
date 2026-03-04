@@ -1,0 +1,2 @@
+-- Write a script that displays the number of records in the table second_table for each score, ordered by score (highest score first).
+SELECT score, COUNT(*) AS number FROM second_table GROUP BY score ORDER BY score DESC;
