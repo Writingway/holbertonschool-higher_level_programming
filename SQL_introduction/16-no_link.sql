@@ -1,0 +1,2 @@
+-- Write a script that displays the score and name of each record in the table second_table, ordered by score (highest score first).
+SELECT score, name FROM second_table WHERE name IS NOT NULL ORDER BY score DESC;
