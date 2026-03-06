@@ -16,8 +16,10 @@ if __name__ == "__main__":
         database=database,
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-                .format(states))
+    cur.execute(
+        "SELECT * FROM states "
+        "WHERE name = '{}' ORDER BY id ASC".format(states)
+    )
     rows = cur.fetchall()
     for row in rows:
         print(row)
