@@ -7,7 +7,7 @@ import MySQLdb
 import sys
 
 
-def connect_to_db():
+if __name__ == "__main__":
     """
     Filter all states from the database hbtn_0e_0_usa
     that start with N (upper N) and are safe from MySQL injections
@@ -27,7 +27,3 @@ def connect_to_db():
         print(row)
     cur.close()
     db.close()
-
-
-if __name__ == "__main__":
-    connect_to_db()
