@@ -1,11 +1,17 @@
 #!/usr/bin/python3
-""" Filter all states from the database hbtn_0e_0_usa"""
+"""
+Filter all states from the database hbtn_0e_0_usa
+that start with N (upper N) and are safe from MySQL injections
+"""
 import MySQLdb
 import sys
 
 
 def connect_to_db():
-    """ Filter all states from the database hbtn_0e_0_usa"""
+    """
+    Filter all states from the database hbtn_0e_0_usa
+    that start with N (upper N) and are safe from MySQL injections
+    """
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
