@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Filter all states from the database hbtn_0e_0_usa where name starts with N (upper N)"""
+"""Script that lists all states with a name starting with N."""
 
 import MySQLdb
 import sys
@@ -18,15 +18,15 @@ if __name__ == "__main__":
         db=database
     )
 
-    cur = db.cursor()
-    cur.execute(
+    cursor = db.cursor()
+    cursor.execute(
         "SELECT * FROM states "
         "WHERE name LIKE BINARY 'N%' ORDER BY states.id ASC"
     )
 
-    rows = cur.fetchall()
+    rows = cursor.fetchall()
     for row in rows:
         print(row)
 
-    cur.close()
+    cursor.close()
     db.close()
