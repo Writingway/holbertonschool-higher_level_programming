@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Filter all states from the database hbtn_0e_0_usa."""
+"""Filter all states from the database hbtn_0e_0_usa where name starts with N (upper N)"""
 
 import MySQLdb
 import sys
