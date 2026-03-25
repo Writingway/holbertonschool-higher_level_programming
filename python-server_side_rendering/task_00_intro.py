@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+import os
+#Use os.path.exists to check if a file already exists before writing.
+
 
 def generate_invitations(template_content, attendees):
     if not template_content:
@@ -35,7 +38,10 @@ def generate_invitations(template_content, attendees):
 
         try:
             output_filename = f"output_{attendees.index(attendee) + 1}.txt"
-            with open(output_filename, 'w') as output_file:
-                output_file.write(invitation)
+            if os.path.exists(output_filename):
+                print(f"File {output_filename} already exists.")
+            else:
+                with open(output_filename, 'w') as output_file:
+                    output_file.write(invitation)
         except Exception as e:
             print(f"Error writing to file {output_filename}: {e}")
