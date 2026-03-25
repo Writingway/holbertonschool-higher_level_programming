@@ -24,10 +24,10 @@ def generate_invitations(template_content, attendees):
                 print("Invalid input type for attendee. Expected a dictionary.")
                 return
 
-            name = attendee.get("name", "Guest")
-            event_title = attendee.get("event_title", "Event")
-            event_date = attendee.get("event_date", "TBA")
-            event_location = attendee.get("event_location", "TBA")
+            name = attendee.get("name", "N/A")
+            event_title = attendee.get("event_title", "N/A")
+            event_date = attendee.get("event_date", "N/A")
+            event_location = attendee.get("event_location", "N/A")
 
             # Replace placeholders in the template
             invitation = template_content.replace("{name}", name or "N/A")
