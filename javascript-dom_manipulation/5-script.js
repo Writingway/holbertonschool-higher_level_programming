@@ -1,4 +1,5 @@
 const toggle = document.querySelector("#update_header");
 toggle.addEventListener("click", function() {
-  toggle.textContent = "New Header!!!";
+  const header = document.querySelector("header");
+  header.textContent = "New Header!!!";
 });
