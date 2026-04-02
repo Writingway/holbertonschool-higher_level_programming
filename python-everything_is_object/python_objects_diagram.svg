@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="Diagram showing variables pointing to Python objects">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 34px/1.2 Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 24px/1.2 Arial, sans-serif; fill: #0f172a; }
+      .small { font: 400 18px/1.4 Arial, sans-serif; fill: #334155; }
+      .box { rx: 18; ry: 18; stroke: #334155; stroke-width: 3; }
+    </style>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <text x="60" y="70" class="title">Python variables are labels that point to objects</text>
+
+  <rect x="70" y="150" width="260" height="110" fill="#fef3c7" class="box"/>
+  <text x="200" y="193" text-anchor="middle" class="label">my_list</text>
+  <text x="200" y="228" text-anchor="middle" class="small">variable / reference</text>
+
+  <rect x="470" y="120" width="290" height="170" fill="#dbeafe" class="box"/>
+  <text x="615" y="168" text-anchor="middle" class="label">[1, 2, 3]</text>
+  <text x="615" y="205" text-anchor="middle" class="small">object in memory</text>
+  <text x="615" y="238" text-anchor="middle" class="small">id: 1400...  type: list</text>
+
+  <rect x="860" y="150" width="270" height="110" fill="#dcfce7" class="box"/>
+  <text x="995" y="193" text-anchor="middle" class="label">new_list</text>
+  <text x="995" y="228" text-anchor="middle" class="small">another reference</text>
+
+  <line x1="330" y1="205" x2="470" y2="205" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="860" y1="205" x2="760" y2="205" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="600" y="355" text-anchor="middle" class="small">Two variables can point to the same object, so changing a mutable object affects every reference.</text>
+</svg>
