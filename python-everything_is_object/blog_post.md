@@ -57,9 +57,47 @@ False
 
 This is where `is` and `==` stop meaning the same thing. `is` checks identity, while `==` checks value equality. Two different objects can compare equal, and two names can point to the exact same object. That distinction becomes important throughout the rest of the project.
 
+## Integer Pre-allocation in CPython
+
+CPython pre-allocates a small range of integer objects at startup. In the source code, these limits are controlled by two constants: `NSMALLNEGINTS` and `NSMALLPOSINTS`.
+
+- `NSMALLNEGINTS = 5`
+- `NSMALLPOSINTS = 257`
+
+This means integers from `-5` to `256` are created once and reused, which gives `262` cached integers in total.
+
+```python
+a = 256
+b = 256
+
+print(a is b)  # usually True in CPython
+
+x = int("257")
+y = int("257")
+
+print(x is y)  # usually False
+print(x == y)  # True
+```
+
+```text
+True
+False
+True
+```
+
+How these constants are used: when CPython needs an int in the cached range, it reuses an existing object instead of allocating a new one.
+
+Why those values: these are the most frequently used integers in real programs (indexes, lengths, counters, flags, small offsets), so caching them reduces allocations and improves runtime performance.
+
 ## Mutable Objects
 
 Mutable objects can change after they are created. Lists, dictionaries, and sets are the clearest examples. If two variables point to the same mutable object, a change through one name is visible through the other name because both names still point to the same object.
+
+Common mutable built-in objects:
+- `list`
+- `dict`
+- `set`
+- `bytearray`
 
 ```python
 my_list = [1, 2, 3]
@@ -101,6 +139,13 @@ Mutability is powerful, but it also creates subtle bugs when you forget that a f
 
 Immutable objects cannot be changed in place. Integers, floats, strings, tuples, and frozensets are the main examples covered here. If you “modify” one of these objects, Python actually creates a new object instead of editing the old one.
 
+Common immutable built-in objects:
+- numbers: `int`, `float`, `complex`
+- `str`
+- `tuple`
+- `frozenset`
+- `bytes`
+
 ```python
 name = "Python"
 new_name = name.upper()
@@ -132,6 +177,27 @@ print(type(point))
 ```
 
 This matters because immutable objects behave predictably in shared references: if a name “changes” to a new value, it now points to a different object rather than updating a shared object in place.
+
+## Special Case: Immutable Container, Mutable Content
+
+Tuples and frozensets are immutable containers, but they can still contain mutable objects. The container identity and structure stay fixed, while an inner mutable object can still change.
+
+```python
+t = ([1, 2], "immutable shell")
+f = frozenset({("x", 1), ("y", 2)})
+
+t[0].append(99)
+
+print(t)
+print(type(f))
+```
+
+```text
+([1, 2, 99], 'immutable shell')
+<class 'frozenset'>
+```
+
+You still cannot rebind tuple positions or modify a frozenset itself, but mutable items referenced inside a tuple can be mutated through their own methods.
 
 ## Why It Matters
 
